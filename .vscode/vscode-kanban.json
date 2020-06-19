@@ -1,0 +1,34 @@
+{
+  "done": [],
+  "in-progress": [],
+  "testing": [],
+  "todo": [
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
+      "creation_time": "2020-06-19T11:19:58.392Z",
+      "id": "2",
+      "references": [],
+      "title": "Create context-based fetch API"
+    },
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
+      "creation_time": "2020-06-19T11:19:08.083Z",
+      "id": "1",
+      "references": [],
+      "title": "Install component lib/styling framework"
+    },
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
+      "creation_time": "2020-06-19T11:20:24.900Z",
+      "id": "3",
+      "references": [],
+      "title": "Fetch data for categories in static generation"
+    }
+  ]
+}
