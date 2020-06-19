@@ -1,6 +1,6 @@
 import Head from "next/head"
 
-export default function Home() {
+export default function Home({ allCategories }) {
   return (
     <div className="container">
       <Head>
@@ -163,4 +163,16 @@ export default function Home() {
       `}</style>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const allCategories = await fetch(
+    "https://www.themealdb.com/api/json/v1/1/categories.php"
+  )
+    .then((res) => {
+      return res.json()
+    })
+    .catch((e) => console.error(e))
+  console.log(allCategories)
+  return { props: { allCategories } }
 }
