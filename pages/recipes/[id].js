@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export default function RecipeCategoryPage({ recipes }) {
   return (
-    <>
+    <div>
       {recipes.map((recipe) => (
         <div key={recipe.strMeal}>
           <img src={recipe.strMealThumb} />
@@ -13,7 +13,7 @@ export default function RecipeCategoryPage({ recipes }) {
           </Link>
         </div>
       ))}
-    </>
+    </div>
   )
 }
 
