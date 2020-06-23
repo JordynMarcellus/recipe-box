@@ -2,13 +2,36 @@ import React from "react"
 import Head from "next/head"
 import Link from "next/link"
 
-export default function RecipeCategoryPage({ meal }) {
+import { StyledHeadline } from "../../../styles"
+
+// Not all recipes use new-line/returns. we can only do so much with this data!
+const renderMealInstructionsToListItems = (instructionsString) => {
+  const splitString = instructionsString.split("\r\n")
+  return (
+    <ol>
+      {splitString.map((instruction, index) => (
+        <li key={index}>{instruction}</li>
+      ))}
+    </ol>
+  )
+}
+
+export default function RecipeCategoryPage({ meal, ingredients }) {
   return (
     <div>
-      <h2>{meal.strMeal}</h2>
+      <StyledHeadline>{meal.strMeal}</StyledHeadline>
       <img src={meal.strMealThumb} />
-      {/* @TODO make this render in an ordered list*/}
-      <p>{meal.strInstructions}</p>
+      <h2> Ingredients </h2>
+      <ul>
+        {ingredients.map((ingredientStep, index) => (
+          <li key={`${ingredientStep.ingredient}--${index}`}>
+            {ingredientStep.measurement}{" "}
+            {ingredientStep.ingredient.toLowerCase()}
+          </li>
+        ))}
+      </ul>
+      <h2> Instructions</h2>
+      {renderMealInstructionsToListItems(meal.strInstructions)}
     </div>
   )
 }
@@ -52,7 +75,19 @@ export async function getStaticProps({ params }) {
 
   const [meal] = meals
 
+  const ingredients = Object.keys(meal)
+    .filter((element) => meal[element] !== "")
+    .reduce((arrayOfMeasurementsAndIngredients, currentObjectKey) => {
+      if (/str(Ingredient)/.test(currentObjectKey)) {
+        const [ingredientKeyNumber] = currentObjectKey.match(/\d+/)
+        return arrayOfMeasurementsAndIngredients.concat({
+          ingredient: meal[currentObjectKey],
+          measurement: meal[`strMeasure${ingredientKeyNumber}`],
+        })
+      }
+      return arrayOfMeasurementsAndIngredients
+    }, [])
   return {
-    props: { meal },
+    props: { meal, ingredients },
   }
 }
