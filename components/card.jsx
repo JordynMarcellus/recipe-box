@@ -10,7 +10,10 @@ export const Card = (props) => {
       {/* @TODO: Get the alt text for these images! */}
       <Image fit="cover" src={props.img} />
       {/* would be dope to get this to be a human-readable category name */}
-      <Link href={`/recipes/${props.title.toLowerCase()}`}>
+      <Link
+        href={`/recipes/[id]}`}
+        as={`/recipes/${props.title.toLowerCase()}`}
+      >
         <a>{`Get recipes for ${props.title}`}</a>
       </Link>
     </Box>

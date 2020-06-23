@@ -7,7 +7,6 @@ export default function RecipeCategoryPage({ meal }) {
     <div>
       <h2>{meal.strMeal}</h2>
       <img src={meal.strMealThumb} />
-      {console.log(meal.strInstructions)}
       {/* @TODO make this render in an ordered list*/}
       <p>{meal.strInstructions}</p>
     </div>
