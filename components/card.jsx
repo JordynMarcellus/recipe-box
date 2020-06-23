@@ -1,28 +1,33 @@
 import React from "react"
 import Link from "next/link"
-import { Box, Text, Image, Button } from "grommet"
 import PropTypes from "prop-types"
+import styled from "styled-components"
+
+const StyledCardItem = styled.li`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+`
 
 export const Card = (props) => {
   return (
-    <Box>
-      <Text>{props.title}</Text>
-      {/* @TODO: Get the alt text for these images! */}
-      <Image fit="cover" src={props.img} />
-      {/* would be dope to get this to be a human-readable category name */}
-      <Link
-        href={`/recipes/[id]}`}
-        as={`/recipes/${props.title.toLowerCase()}`}
-      >
-        <a>{`Get recipes for ${props.title}`}</a>
+    <StyledCardItem>
+      <img src={props.img} alt="" />
+      <h2>{props.title}</h2>
+      <Link href={props.linkProps.href} as={props.linkProps.as}>
+        <a>{props.linkProps.description}</a>
       </Link>
-    </Box>
+    </StyledCardItem>
   )
 }
 
 Card.propTypes = {
   title: PropTypes.string,
-  image: PropTypes.string,
-  description: PropTypes.string,
+  img: PropTypes.string,
   id: PropTypes.number,
+  linkProps: PropTypes.shape({
+    href: PropTypes.string,
+    as: PropTypes.string,
+    description: PropTypes.string,
+  }).isRequired,
 }

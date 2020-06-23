@@ -1,28 +1,29 @@
 import { Grommet, Box } from "grommet"
 import Head from "next/head"
-import styled from "styled-components"
 
 import { Card } from "../components/card.jsx"
-
-const StyledGridContainer = styled.section`
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  padding: 2rem;
-`
+import { StyledHeadline, StyledGridContainer } from "../styles"
 
 export default function Home({ allCategories }) {
   return (
     <Grommet plain>
       <Head>
-        <title>Recipe Box</title>
+        <title>Recipe Box 😋</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1> Recipe Box </h1>
+        <StyledHeadline>Recipe Box</StyledHeadline>
         <StyledGridContainer>
           {allCategories.map((category) => (
-            <Card key={category.title} {...category} />
+            <Card
+              key={category.title}
+              {...category}
+              linkProps={{
+                as: `/recipes/${props.title.toLowerCase()}`,
+                href: `/recipes/[id]`,
+                description: `Get recipes for ${category.title}`,
+              }}
+            />
           ))}
         </StyledGridContainer>
       </main>

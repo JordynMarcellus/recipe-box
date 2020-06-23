@@ -2,21 +2,27 @@ import React from "react"
 import Head from "next/head"
 import Link from "next/link"
 
+import { Card } from "../../../components/card.jsx"
+import { StyledHeadline, StyledGridContainer } from "../../../styles"
+
 export default function RecipeCategoryPage({ recipes, title }) {
   return (
     <div>
-      <span> Recipes for {title} </span>
-      {recipes.map((recipe) => (
-        <div key={recipe.strMeal}>
-          <img src={recipe.strMealThumb} />
-          <Link
-            href={`/recipes/[id]/[recipeId]`}
-            as={`/recipes/${title}/${recipe.idMeal}`}
-          >
-            <a>{recipe.strMeal}</a>
-          </Link>
-        </div>
-      ))}
+      <StyledHeadline>Recipes for {title}</StyledHeadline>
+      <StyledGridContainer>
+        {recipes.map((recipe) => (
+          <Card
+            img={recipe.strMealThumb}
+            title={recipe.strMeal}
+            key={recipe.strMeal}
+            linkProps={{
+              href: `/recipes/[id]/[recipeId]`,
+              as: `/recipes/${title}/${recipe.idMeal}`,
+              description: `Get the recipes for ${recipe.strMeal}`,
+            }}
+          ></Card>
+        ))}
+      </StyledGridContainer>
     </div>
   )
 }
