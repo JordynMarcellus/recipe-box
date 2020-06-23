@@ -1,17 +1,5 @@
 {
-  "done": [],
-  "in-progress": [],
-  "testing": [],
-  "todo": [
-    {
-      "assignedTo": {
-        "name": "Jordyn Marcellus"
-      },
-      "creation_time": "2020-06-19T11:19:58.392Z",
-      "id": "2",
-      "references": [],
-      "title": "Create context-based fetch API"
-    },
+  "done": [
     {
       "assignedTo": {
         "name": "Jordyn Marcellus"
@@ -20,15 +8,46 @@
       "id": "1",
       "references": [],
       "title": "Install component lib/styling framework"
+    }
+  ],
+  "in-progress": [],
+  "testing": [],
+  "todo": [
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
+      "creation_time": "2020-06-23T00:19:39.870Z",
+      "id": "3",
+      "references": [],
+      "title": "Style and format category list"
     },
     {
       "assignedTo": {
         "name": "Jordyn Marcellus"
       },
-      "creation_time": "2020-06-19T11:20:24.900Z",
-      "id": "3",
+      "creation_time": "2020-06-23T00:19:30.056Z",
+      "id": "2",
       "references": [],
-      "title": "Fetch data for categories in static generation"
+      "title": "Style and format index page"
+    },
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
+      "creation_time": "2020-06-23T00:20:12.557Z",
+      "id": "4",
+      "references": [],
+      "title": "Style, format and serialize content for recipe page"
+    },
+    {
+      "assignedTo": {
+        "name": "Jordyn Marcellus"
+      },
+      "creation_time": "2020-06-23T00:20:21.786Z",
+      "id": "5",
+      "references": [],
+      "title": "Nav bar"
     }
   ]
 }

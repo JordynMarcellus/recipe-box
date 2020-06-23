@@ -21,11 +21,6 @@ export default function RecipeCategoryPage({ recipes, title }) {
   )
 }
 
-// annoyingly, we can't pass params around in static generation.
-// we'll duplicate the effort of calling the API due to time constraints -- some suggest doing file-system level caching which... we won't do for this project XD (https://github.com/vercel/next.js/issues/10933#issuecomment-598297975)
-// ultimately, if this was a purely client-side app we'd hit the API more (category -> recipes in cat.)
-// maybe we do recipe search client-side to avoid accidentally doing a minor DOS.
-
 export async function getStaticPaths() {
   const { categories } = await fetch(
     "https://www.themealdb.com/api/json/v1/1/categories.php"

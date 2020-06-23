@@ -8,7 +8,7 @@ export default function RecipeCategoryPage({ meal }) {
       <h2>{meal.strMeal}</h2>
       <img src={meal.strMealThumb} />
       {console.log(meal.strInstructions)}
-      {/* @TODO */}
+      {/* @TODO make this render in an ordered list*/}
       <p>{meal.strInstructions}</p>
     </div>
   )
@@ -45,7 +45,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  // @TODO util-ify this fetch?
   const { recipeId } = params
 
   const url = ` https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`
