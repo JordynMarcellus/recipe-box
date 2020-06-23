@@ -2,14 +2,17 @@ import React from "react"
 import Head from "next/head"
 import Link from "next/link"
 
-export default function RecipeCategoryPage() {
-  return <div>hello world!</div>
+export default function RecipeCategoryPage({ meal }) {
+  return (
+    <div>
+      <h2>{meal.strMeal}</h2>
+      <img src={meal.strMealThumb} />
+      {console.log(meal.strInstructions)}
+      {/* @TODO */}
+      <p>{meal.strInstructions}</p>
+    </div>
+  )
 }
-
-// annoyingly, we can't pass params around in static generation.
-// we'll duplicate the effort of calling the API due to time constraints -- some suggest doing file-system level caching which... we won't do for this project XD (https://github.com/vercel/next.js/issues/10933#issuecomment-598297975)
-// ultimately, if this was a purely client-side app we'd hit the API more (category -> recipes in cat.)
-// maybe we do recipe search client-side to avoid accidentally doing a minor DOS.
 
 export async function getStaticPaths() {
   const { categories } = await fetch(
@@ -44,11 +47,14 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   // @TODO util-ify this fetch?
   const { recipeId } = params
-  console.log(recipeId)
+
   const url = ` https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`
 
   const { meals } = await fetch(url).then((res) => res.json())
+
+  const [meal] = meals
+
   return {
-    props: { meal: meals },
+    props: { meal },
   }
 }
