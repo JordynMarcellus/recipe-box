@@ -101,7 +101,9 @@ export async function getStaticProps({ params }) {
   const [meal] = meals
 
   const ingredients = Object.keys(meal)
-    .filter((element) => meal[element] !== "")
+    // 🤯 -- values are null and empty string so they're falsey values. we can just do a general falsiness check to clear out the junk.
+
+    .filter((element) => meal[element])
     .reduce((arrayOfMeasurementsAndIngredients, currentObjectKey) => {
       if (/str(Ingredient)/.test(currentObjectKey)) {
         const [ingredientKeyNumber] = currentObjectKey.match(/\d+/)
@@ -112,6 +114,7 @@ export async function getStaticProps({ params }) {
       }
       return arrayOfMeasurementsAndIngredients
     }, [])
+  console.log(meal, ingredients)
   return {
     props: { meal, ingredients },
   }
