@@ -2,12 +2,13 @@ import React from "react"
 import Head from "next/head"
 import Link from "next/link"
 
-import { Card } from "../../../components/card.jsx"
+import { Layout } from "../../../components/layout"
+import { Card } from "../../../components/card"
 import { StyledHeadline, StyledGridContainer } from "../../../styles"
 
 export default function RecipeCategoryPage({ recipes, title }) {
   return (
-    <div>
+    <Layout title={`Recipe box -- ${title} recipes`}>
       <StyledHeadline>Recipes for {title}</StyledHeadline>
       <StyledGridContainer>
         {recipes.map((recipe) => (
@@ -23,7 +24,7 @@ export default function RecipeCategoryPage({ recipes, title }) {
           ></Card>
         ))}
       </StyledGridContainer>
-    </div>
+    </Layout>
   )
 }
 

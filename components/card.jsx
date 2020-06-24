@@ -7,12 +7,17 @@ const StyledCardItem = styled.li`
   list-style: none;
   display: flex;
   flex-direction: column;
+  align-items: center;
+`
+
+const StyledCardImg = styled.img`
+  max-width: 300px;
 `
 
 export const Card = (props) => {
   return (
     <StyledCardItem>
-      <img src={props.img} alt="" />
+      <StyledCardImg src={props.img} alt="" />
       <h2>{props.title}</h2>
       <Link href={props.linkProps.href} as={props.linkProps.as}>
         <a>{props.linkProps.description}</a>

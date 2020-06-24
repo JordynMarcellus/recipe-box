@@ -3,8 +3,8 @@ import Head from "next/head"
 import Link from "next/link"
 
 import { StyledHeadline } from "../../../styles"
-
-// Not all recipes use new-line/returns. we can only do so much with this data!
+import { Layout } from "../../../components/layout"
+// Not all recipes use new-line/returns. we can only do so much with this data given time constraints
 const renderMealInstructionsToListItems = (instructionsString) => {
   const splitString = instructionsString.split("\r\n")
   return (
@@ -18,7 +18,10 @@ const renderMealInstructionsToListItems = (instructionsString) => {
 
 export default function RecipeCategoryPage({ meal, ingredients }) {
   return (
-    <div>
+    <Layout>
+      <Head>
+        <title>Recipe Box -- {meal.strMeal} </title>
+      </Head>
       <StyledHeadline>{meal.strMeal}</StyledHeadline>
       <img src={meal.strMealThumb} />
       <h2> Ingredients </h2>
@@ -32,7 +35,7 @@ export default function RecipeCategoryPage({ meal, ingredients }) {
       </ul>
       <h2> Instructions</h2>
       {renderMealInstructionsToListItems(meal.strInstructions)}
-    </div>
+    </Layout>
   )
 }
 

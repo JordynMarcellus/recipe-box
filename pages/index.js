@@ -1,35 +1,27 @@
-import { Grommet, Box } from "grommet"
 import Head from "next/head"
 
+import { Layout } from "../components/layout"
 import { Card } from "../components/card.jsx"
 import { StyledHeadline, StyledGridContainer } from "../styles"
 
 export default function Home({ allCategories }) {
   return (
-    <Grommet plain>
-      <Head>
-        <title>Recipe Box 😋</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main>
-        <StyledHeadline>Recipe Box</StyledHeadline>
-        <StyledGridContainer>
-          {allCategories.map((category) => (
-            <Card
-              key={category.title}
-              {...category}
-              linkProps={{
-                as: `/recipes/${props.title.toLowerCase()}`,
-                href: `/recipes/[id]`,
-                description: `Get recipes for ${category.title}`,
-              }}
-            />
-          ))}
-        </StyledGridContainer>
-      </main>
-
-      <footer></footer>
-    </Grommet>
+    <Layout title="Recipe Box">
+      <StyledHeadline>Recipe Box</StyledHeadline>
+      <StyledGridContainer>
+        {allCategories.map((category) => (
+          <Card
+            key={category.title}
+            {...category}
+            linkProps={{
+              as: `/recipes/${category.title.toLowerCase()}`,
+              href: `/recipes/[id]`,
+              description: `Get recipes for ${category.title}`,
+            }}
+          />
+        ))}
+      </StyledGridContainer>
+    </Layout>
   )
 }
 
