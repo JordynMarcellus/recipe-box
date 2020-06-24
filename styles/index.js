@@ -5,13 +5,13 @@ export const StyledGridContainer = styled.section`
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  @media (min-width: 400px) {
+  @media (min-width: 25rem) {
     display: grid;
     grid-gap: 2rem 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     padding: 2rem;
   }
-  @media (min-width: 960px) {
+  @media (min-width: 40rem) {
     padding: 2rem 10rem;
   }
 `

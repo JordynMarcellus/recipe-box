@@ -114,7 +114,6 @@ export async function getStaticProps({ params }) {
       }
       return arrayOfMeasurementsAndIngredients
     }, [])
-  console.log(meal, ingredients)
   return {
     props: { meal, ingredients },
   }

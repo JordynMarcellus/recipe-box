@@ -9,8 +9,8 @@ export const Layout = memo(({ children, title }) => (
     <Head>
       <title>{title}</title>
       <link rel="icon" href="/favicon.ico" />
+      <GlobalStyles />
     </Head>
-    <GlobalStyles />
     <Nav>
       <Header title={title} />
     </Nav>

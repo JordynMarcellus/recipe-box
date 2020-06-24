@@ -10,6 +10,10 @@ const StyledCardItem = styled.li`
   align-items: center;
 `
 
+const StyledLinkWrapper = styled.div`
+  margin-top: auto;
+`
+
 const StyledCardImg = styled.img`
   max-width: 100%;
 `
@@ -19,9 +23,11 @@ export const Card = (props) => {
     <StyledCardItem>
       <StyledCardImg src={props.img} alt="" />
       <h2>{props.title}</h2>
-      <Link href={props.linkProps.href} as={props.linkProps.as}>
-        <a>{props.linkProps.description}</a>
-      </Link>
+      <StyledLinkWrapper>
+        <Link href={props.linkProps.href} as={props.linkProps.as}>
+          <a>{props.linkProps.description}</a>
+        </Link>
+      </StyledLinkWrapper>
     </StyledCardItem>
   )
 }

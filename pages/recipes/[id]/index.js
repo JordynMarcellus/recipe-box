@@ -9,7 +9,6 @@ import { StyledHeadline, StyledGridContainer } from "../../../styles"
 export default function RecipeCategoryPage({ recipes, title }) {
   return (
     <Layout title={`Recipe box -- ${title} recipes`}>
-      <StyledHeadline>Recipes for {title}</StyledHeadline>
       <StyledGridContainer>
         {recipes.map((recipe) => (
           <Card
