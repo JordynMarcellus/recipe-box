@@ -11,7 +11,7 @@ const StyledCardItem = styled.li`
 `
 
 const StyledCardImg = styled.img`
-  max-width: 300px;
+  max-width: 100%;
 `
 
 export const Card = (props) => {

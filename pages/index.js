@@ -7,7 +7,6 @@ import { StyledHeadline, StyledGridContainer } from "../styles"
 export default function Home({ allCategories }) {
   return (
     <Layout title="Recipe Box">
-      <StyledHeadline>Recipe Box</StyledHeadline>
       <StyledGridContainer>
         {allCategories.map((category) => (
           <Card

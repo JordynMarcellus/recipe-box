@@ -1,9 +1,11 @@
 import React from "react"
 import Head from "next/head"
 import Link from "next/link"
+import styled from "styled-components"
 
 import { StyledHeadline } from "../../../styles"
 import { Layout } from "../../../components/layout"
+
 // Not all recipes use new-line/returns. we can only do so much with this data given time constraints
 const renderMealInstructionsToListItems = (instructionsString) => {
   const splitString = instructionsString.split("\r\n")
@@ -16,25 +18,45 @@ const renderMealInstructionsToListItems = (instructionsString) => {
   )
 }
 
+export const StyledRecipeWrapper = styled.article`
+  display: flex;
+  flex-direction: column;
+  max-width: 50rem;
+  margin: 0 auto;
+`
+export const StyledTextWrapper = styled.div`
+  padding: 2rem;
+`
+
+export const StyledIngredientListItem = styled.li`
+  text-transform: lowercase;
+`
+// we can probably just turn this into a shared styled component in /styles and share b/w card
+export const StyledImg = styled.img`
+  width: 100%;
+`
+
 export default function RecipeCategoryPage({ meal, ingredients }) {
   return (
-    <Layout>
-      <Head>
-        <title>Recipe Box -- {meal.strMeal} </title>
-      </Head>
-      <StyledHeadline>{meal.strMeal}</StyledHeadline>
-      <img src={meal.strMealThumb} />
-      <h2> Ingredients </h2>
-      <ul>
-        {ingredients.map((ingredientStep, index) => (
-          <li key={`${ingredientStep.ingredient}--${index}`}>
-            {ingredientStep.measurement}{" "}
-            {ingredientStep.ingredient.toLowerCase()}
-          </li>
-        ))}
-      </ul>
-      <h2> Instructions</h2>
-      {renderMealInstructionsToListItems(meal.strInstructions)}
+    <Layout title={`Recipe Box -- ${meal.strMeal}`}>
+      <StyledRecipeWrapper>
+        <StyledImg src={meal.strMealThumb} alt="" />
+        <StyledTextWrapper>
+          <h2> Ingredients </h2>
+          <ul>
+            {ingredients.map((ingredientStep, index) => (
+              <StyledIngredientListItem
+                key={`${ingredientStep.ingredient}--${index}`}
+              >
+                {ingredientStep.measurement}{" "}
+                {ingredientStep.ingredient.toLowerCase()}
+              </StyledIngredientListItem>
+            ))}
+          </ul>
+          <h2>Instructions</h2>
+          {renderMealInstructionsToListItems(meal.strInstructions)}
+        </StyledTextWrapper>
+      </StyledRecipeWrapper>
     </Layout>
   )
 }
