@@ -6,35 +6,42 @@ import styled from "styled-components"
 import { StyledHeadline } from "../../../styles"
 import { Layout } from "../../../components/layout"
 
-// Not all recipes use new-line/returns. we can only do so much with this data given time constraints
-const renderMealInstructionsToListItems = (instructionsString) => {
-  const splitString = instructionsString.split("\r\n")
-  return (
-    <ol>
-      {splitString.map((instruction, index) => (
-        <li key={index}>{instruction}</li>
-      ))}
-    </ol>
-  )
-}
-
-export const StyledRecipeWrapper = styled.article`
+const StyledRecipeWrapper = styled.article`
   display: flex;
   flex-direction: column;
   max-width: 50rem;
   margin: 0 auto;
 `
-export const StyledTextWrapper = styled.div`
+const StyledTextWrapper = styled.div`
   padding: 2rem;
 `
 
-export const StyledIngredientListItem = styled.li`
+const StyledIngredientListItem = styled.li`
   text-transform: lowercase;
 `
 // we can probably just turn this into a shared styled component in /styles and share b/w card
-export const StyledImg = styled.img`
+const StyledImg = styled.img`
   width: 100%;
 `
+
+const StyledInstructionsTextBlock = styled.span`
+  display: block;
+  margin-bottom: 0.5rem;
+`
+
+// Not all recipes use new-line/returns. we can only do so much with this data given time constraints
+const renderMealInstructionsToListItems = (instructionsString) => {
+  const splitString = instructionsString.split("\r\n")
+  return (
+    <p>
+      {splitString.map((instruction, index) => (
+        <StyledInstructionsTextBlock key={index}>
+          {instruction}
+        </StyledInstructionsTextBlock>
+      ))}
+    </p>
+  )
+}
 
 export default function RecipeCategoryPage({ meal, ingredients }) {
   return (

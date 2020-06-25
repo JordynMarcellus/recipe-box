@@ -1,8 +1,18 @@
-App flow
+Assumptions:
 
-- Use static generation to get categories and present them to the user on first load.
-  - Use netlify to build and deploy app because ez pz
-- User will see categories, and can pick from them
+- User can pick from a category on the main page -> go into any category page -> go into recipe page.
+- Ensure proper keyboard a11y for traversing -- just need good semantics here with links (static generation helps here)
+- Allow user to go back at any time
+- Ensure that we have some basic SEO and good-enough performance.
+- Statically-generate everything possible to optimize for quick page loads.
+
+## Future Enhancements
+
+- Run data through a sort function in getStaticProps to allow for alphabetical sorting
+- Use some kind of memoized fetch util to not murder the poor API
+- Print media query on the recipe page would be nice
+- Create a custom next.js document to prevent flash of unstyled content
+- Could be fun to add little check marks on each recipe step.
 
 ---
 
@@ -19,20 +29,3 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/zeit/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on ZEIT Now
-
-The easiest way to deploy your Next.js app is to use the [ZEIT Now Platform](https://zeit.co/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
