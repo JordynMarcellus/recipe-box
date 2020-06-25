@@ -5,15 +5,15 @@ import { Header } from "./header"
 import { GlobalStyles } from "../styles/index"
 
 export const Layout = memo(({ children, title }) => (
-  <>
+  <div>
     <Head>
       <title>{title}</title>
       <link rel="icon" href="/favicon.ico" />
-      <GlobalStyles />
     </Head>
+    <GlobalStyles />
     <Nav>
       <Header title={title} />
     </Nav>
     <main>{children}</main>
-  </>
+  </div>
 ))
